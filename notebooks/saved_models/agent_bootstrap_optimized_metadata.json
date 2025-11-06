@@ -1,0 +1,39 @@
+{
+  "optimizer_type": "BootstrapFewShot",
+  "saved_at": "2025-11-01T17:11:16.508491",
+  "state_file": "saved_models/agent_bootstrap_optimized_state.json",
+  "full_program_dir": "saved_models/agent_bootstrap_optimized_full",
+  "model_signature": "DSPyAirlineCustomerService",
+  "tools": [
+    "fetch_flight_info",
+    "pick_flight",
+    "get_user_info",
+    "book_flight",
+    "cancel_itinerary",
+    "file_ticket"
+  ],
+  "max_iters": 10,
+  "performance": {
+    "baseline": {
+      "task_completion": 0.8333333333333334,
+      "tool_accuracy": 0.0,
+      "response_quality": 0.7000000000000001,
+      "efficiency": 0.5,
+      "combined": 0.5483333333333333
+    },
+    "optimized": {
+      "task_completion": 0.8333333333333334,
+      "tool_accuracy": 0.0,
+      "response_quality": 0.8666666666666667,
+      "efficiency": 0.5,
+      "combined": 0.5816666666666667
+    },
+    "improvement": {
+      "task_completion": 0.0,
+      "tool_accuracy": 0.0,
+      "response_quality": 0.16666666666666663,
+      "efficiency": 0.0,
+      "combined": 0.033333333333333326
+    }
+  }
+}

@@ -1,0 +1,110 @@
+# Jupyter Book Configuration - Production-Ready Multi-Agent Systems with DSPy
+
+#######################################################################################
+# Book settings
+#######################################################################################
+
+title: "Production-Ready Multi-Agent Systems with DSPy"
+author: "João Gabriel Lima"
+logo: assets/images/logo.png
+copyright: "2025"
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: cache
+  timeout: 600
+  allow_errors: false
+  stderr_output: show
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - apendices/referencias.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/joaogabriellima/ai_materials
+  path_to_book: docs
+  branch: main
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  home_page_in_navbar: true
+  baseurl: ""
+  extra_footer: |
+    <div>
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img src="https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png">
+      </a>
+      Production-Ready Multi-Agent Systems with DSPy by João Gabriel Lima is licensed under CC BY-NC-SA 4.0
+    </div>
+
+# Language
+language: pt_BR
+
+# Parse settings
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https]
+
+# Sphinx settings
+sphinx:
+  extra_extensions:
+    - sphinx_design
+    - sphinx_copybutton
+    - sphinxcontrib.mermaid
+  config:
+    language: pt_BR
+    html_theme: sphinx_book_theme
+    html_title: "Production-Ready Multi-Agent Systems with DSPy"
+    html_theme_options:
+      repository_url: https://github.com/joaogabriellima/ai_materials
+      use_repository_button: true
+      use_issues_button: true
+      use_edit_page_button: true
+      use_download_button: true
+      use_fullscreen_button: true
+      home_page_in_navbar: true
+      navigation_with_keys: true
+      show_navbar_depth: 2
+      show_toc_level: 2
+      toc_title: "Nesta Página"
+      logo:
+        text: "DSPy Multi-Agent"
+    html_js_files:
+      - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    mermaid_version: "10.6.0"
+    copybutton_prompt_text: "$ "
+    nb_execution_mode: cache
+    nb_execution_timeout: 600
+
+# Launch buttons
+launch_buttons:
+  notebook_interface: "jupyterlab"
+  binderhub_url: ""
+  colab_url: ""
+  thebe: false
+
+# Advanced settings
+only_build_toc_files: true
+

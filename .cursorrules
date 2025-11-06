@@ -1,0 +1,383 @@
+# Cursor Rules - Production-Ready Multi-Agent Systems with DSPy
+
+## 📚 CONTEXTO DO PROJETO
+
+Este é um **livro técnico** sobre sistemas multi-agent com DSPy.
+
+**SEMPRE CONSULTAR PRIMEIRO:** `docs/_planejamento/00-FONTE-DA-VERDADE.md`
+
+---
+
+## 🎯 OBJETIVOS
+
+1. **Livro completo:** 17 capítulos + 7 apêndices
+2. **Formato:** Jupyter Book (notebooks + markdown)
+3. **Idioma:** Português (PT-BR) com termos técnicos em inglês
+4. **Qualidade:** Production-grade, profissional, referenciado
+5. **Público:** Engenheiros ML, desenvolvedores AI, pesquisadores
+
+---
+
+## 📋 SEMPRE FAZER
+
+### Antes de Qualquer Ação:
+1. ✅ Ler `docs/_planejamento/00-FONTE-DA-VERDADE.md`
+2. ✅ Verificar status real do capítulo
+3. ✅ Consultar `docs/_planejamento/02-MAPEAMENTO-NOTEBOOKS.md` para fontes
+4. ✅ Seguir convenções de `docs/_planejamento/03-WRITING-GUIDE.md`
+
+### Durante Trabalho:
+1. ✅ **Modelar, não copiar:** Notebooks existentes são fonte de inspiração
+2. ✅ **Adicionar teoria:** Muito mais contexto que notebooks originais
+3. ✅ **Explicar conceitos:** Ver `docs/_planejamento/04-KNOWLEDGE-GAPS.md`
+4. ✅ **Testar código:** TODO código deve executar sem erros
+5. ✅ **Citar referências:** Papers em `docs/_planejamento/08-REFERENCIAS-ACADEMICAS.md`
+
+### Depois de Completar:
+1. ✅ Atualizar `docs/_planejamento/00-FONTE-DA-VERDADE.md`
+2. ✅ Atualizar `docs/_planejamento/05-PROGRESS-TRACKER.md`
+3. ✅ Marcar TODOs como completos
+
+---
+
+## ⚠️ NUNCA FAZER
+
+### ❌ Não Copiar Notebooks Diretamente
+- **Errado:** Copiar células do notebook original
+- **Certo:** MODELAR - analisar, extrair conceitos, criar versão didática
+
+### ❌ Não Escrever Sem Contexto
+- **Errado:** Escrever código sem explicação
+- **Certo:** Teoria → Implementação → Análise
+
+### ❌ Não Ignorar Referências
+- **Errado:** Mencionar conceito sem citar fonte
+- **Certo:** Sempre citar papers quando necessário
+
+### ❌ Não Misturar Português e Inglês Incorretamente
+- **Errado:** "Vamos fazer o training do model"
+- **Certo:** "Vamos fazer o fine-tuning do modelo"
+
+### ❌ Não Ser Sensacionalista
+- **Errado:** "Multi-agent RESOLVE TUDO!"
+- **Certo:** "Multi-agent: quando usar, trade-offs, limitações"
+
+---
+
+## 🌍 CONVENÇÕES DE IDIOMA
+
+### Use PORTUGUÊS (PT-BR) para:
+- ✅ Narrativa e explicações
+- ✅ Títulos de capítulos e seções
+- ✅ Comentários no código
+- ✅ Docstrings
+- ✅ Análise e conclusões
+
+### Use INGLÊS para:
+- ✅ Termos técnicos consagrados
+- ✅ Nomes de classes, funções, variáveis
+- ✅ Nomes de frameworks, bibliotecas
+- ✅ Conceitos técnicos universais
+
+**Exemplos de termos que FICAM em inglês:**
+- Signature, Module, Predictor, ChainOfThought, ReAct
+- Fine-tuning (não "ajuste fino")
+- Pipeline, Hierarchical, Collaborative, Reflexive
+- Trade-off, Overfitting, Prompt
+
+### Código:
+
+```python
+# ✅ CORRETO
+class HierarchicalMultiAgent(dspy.Module):
+    """Sistema multi-agente com coordenação hierárquica."""  # PT
+    
+    def __init__(self):
+        super().__init__()
+        # Inicializa coordenador e especialistas  # PT
+        self.coordinator = dspy.ChainOfThought(CoordinatorSignature)
+```
+
+```python
+# ❌ ERRADO
+class SistemaMultiAgente(dspy.Module):  # Nome em PT
+    """Multi-agent system with hierarchical coordination."""  # Docstring em EN
+    
+    def __init__(self):
+        super().__init__()
+        # Initialize coordinator  # Comentário em EN misturado
+```
+
+---
+
+## 📝 ESTRUTURA DE NOTEBOOKS
+
+### Padrão de Capítulo:
+
+```markdown
+# Capítulo X: Título
+
+## Objetivos de Aprendizado
+- Objetivo 1
+- Objetivo 2
+
+## Parte 1: Teoria
+[Explicação completa com referências]
+
+## Parte 2: Implementação
+[Código com explicações]
+
+## Parte 3: Testes
+[Casos simples E complexos]
+
+## Parte 4: Análise
+[Trade-offs, limitações, quando usar]
+
+## Parte 5: Conclusões
+[Summary, próximos passos]
+```
+
+### Células Markdown:
+- Usar `##`, `###` para hierarquia
+- Incluir exemplos de código em markdown quando explicando
+- Adicionar referências: `[Author, Year]`
+- Trade-offs sempre em formato: `✅ Vantagem` / `❌ Desvantagem`
+
+### Células Python:
+- Comentários em português
+- Docstrings completas em português
+- Nomes de variáveis/funções em inglês
+- Print statements informativos
+
+---
+
+## 🗂️ MAPEAMENTO DE FONTES
+
+### Notebooks Existentes → Capítulos:
+
+| Notebook Fonte | Capítulo Destino | Status |
+|----------------|------------------|--------|
+| `dspy_agents_basic_handson_final.ipynb` | Cap 2 | 50% |
+| `dspy_multiagent_cognitive_architectures.ipynb` | Caps 4-7 | 0% |
+| `dspy_multiagent_optimization.ipynb` | Caps 9-10 | 0% |
+| `MULTIAGENT_OPTIMIZATION_SUMMARY.md` | Caps 8,10,11 | 0% |
+| `dspy_optimization_mastery.ipynb` | Cap 12 | 0% |
+| `dspy_tool_use_enterprise.ipynb` | Cap 14 | 0% |
+
+**SEMPRE consultar `docs/_planejamento/02-MAPEAMENTO-NOTEBOOKS.md` para detalhes.**
+
+---
+
+## 🎨 TOM E ESTILO
+
+### ✅ Técnico e Preciso
+- Análise profunda de trade-offs
+- Discussão honesta de limitações
+- Quando NÃO usar determinada abordagem
+- Métricas e dados reais quando possível
+
+### ✅ Didático
+- Narrativa progressiva (simples → complexo)
+- Conceitos explicados antes de usar
+- Exemplos práticos e testáveis
+- Visualizações quando apropriado
+
+### ✅ Production-Grade
+- Código que realmente funciona em produção
+- Não apenas "hello world"
+- Considerações de custo, latência, escala
+- Monitoring, debugging, maintenance
+
+### ❌ Evitar
+- Sensacionalismo ("revolucionário", "melhor solução")
+- Promessas exageradas
+- Código não testado
+- Conceitos sem referências
+
+---
+
+## 📚 REFERÊNCIAS ACADÊMICAS
+
+### Papers Principais (SEMPRE CITAR):
+
+**DSPy:**
+```
+Khattab, O., et al. (2023). DSPy: Compiling Declarative Language Model Calls 
+into Self-Improving Pipelines. arXiv:2310.03714.
+```
+
+**ReAct:**
+```
+Yao, S., et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. 
+arXiv:2210.03629.
+```
+
+**Reflexion:**
+```
+Shinn, N., et al. (2023). Reflexion: Language Agents with Verbal Reinforcement Learning. 
+arXiv:2303.11366.
+```
+
+**MIPRO:**
+```
+Opsahl-Ong, B., et al. (2024). Optimizing Instructions and Demonstrations for 
+Multi-Stage Language Model Programs. arXiv:2406.11695.
+```
+
+**Chain-of-Thought:**
+```
+Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. 
+NeurIPS 2022.
+```
+
+**Ver lista completa:** `docs/_planejamento/08-REFERENCIAS-ACADEMICAS.md`
+
+---
+
+## 🔄 WORKFLOW DE MODELAGEM
+
+### Processo para Cada Capítulo:
+
+1. **Analisar fonte:**
+   ```bash
+   # Ver notebook fonte
+   jupyter lab notebooks/[notebook-fonte].ipynb
+   ```
+
+2. **Planejar estrutura:**
+   - Ler `01-BOOK-OUTLINE.md` → objetivos do capítulo
+   - Ler `02-MAPEAMENTO-NOTEBOOKS.md` → o que extrair
+   - Ler `04-KNOWLEDGE-GAPS.md` → o que explicar
+
+3. **Criar notebook:**
+   - Começar com teoria completa
+   - Adicionar implementação com contexto
+   - Incluir testes (sucesso E falha quando relevante)
+   - Análise de trade-offs
+   - Conclusões e próximos passos
+
+4. **Validar:**
+   - Executar todo código célula por célula
+   - Verificar referências
+   - Checar convenções PT/EN
+   - Atualizar status
+
+5. **Documentar:**
+   - Atualizar `00-FONTE-DA-VERDADE.md`
+   - Atualizar `05-PROGRESS-TRACKER.md`
+   - Marcar TODOs
+
+---
+
+## 📊 STATUS E PROGRESSO
+
+### Consultar SEMPRE:
+- **Status real:** `docs/_planejamento/00-FONTE-DA-VERDADE.md`
+- **Progresso detalhado:** `docs/_planejamento/05-PROGRESS-TRACKER.md`
+- **Última sessão:** `docs/_planejamento/99-SESSAO-PROGRESSO.md`
+
+### Atual:
+- **Progresso geral:** ~8%
+- **Cap 2:** 50% (completar primeiro)
+- **Próximo:** Cap 4 (Sequential)
+
+---
+
+## 🚨 PONTOS CRÍTICOS
+
+### ATENÇÃO ESPECIAL:
+
+1. **Cap 2 (50%):** Material pronto em `parte-1-fundamentos/02-CONTEUDO-RESTANTE-PARA-ADICIONAR.md`
+   
+2. **Cap 13 (Fine-Tuning):** REQUER RESEARCH extenso
+   - Ver: `docs/_planejamento/06-RESEARCH-FINETUNING.md`
+   
+3. **Cap 15 (LLMOps):** REQUER RESEARCH extenso
+   - Ver: `docs/_planejamento/07-RESEARCH-LLMOPS.md`
+
+4. **Demonstração de Limitações:** CRÍTICO em Cap 2
+   - Mostrar onde single agent FALHA
+   - Motivação para multi-agent
+
+---
+
+## 🎯 QUICK REFERENCE
+
+### Comandos Úteis:
+
+```bash
+# Ver estrutura
+cat docs/00-INDICE-VISUAL.md
+
+# Ver status
+cat docs/_planejamento/00-FONTE-DA-VERDADE.md
+
+# Ver progresso
+cat docs/_planejamento/05-PROGRESS-TRACKER.md
+
+# Trabalhar em capítulo
+cd docs/parte-X-*/
+jupyter lab cap-XX-*.ipynb
+
+# Build livro
+cd docs && jupyter-book build .
+```
+
+### Arquivos Importantes:
+
+| Arquivo | Atalho | Propósito |
+|---------|--------|-----------|
+| Fonte da Verdade | `_planejamento/00-*` | Status real |
+| Índice Visual | `00-INDICE-VISUAL.md` | Navegação |
+| Outline | `_planejamento/01-*` | Estrutura |
+| Mapeamento | `_planejamento/02-*` | Fontes |
+| Writing Guide | `_planejamento/03-*` | Convenções |
+| Progress | `_planejamento/05-*` | Status detalhado |
+
+---
+
+## ✅ CHECKLIST PARA CADA CAPÍTULO
+
+Antes de marcar como completo:
+
+- [ ] Teoria completa com referências
+- [ ] Código funcional e testado
+- [ ] Comentários e docstrings em português
+- [ ] Nomes de código em inglês
+- [ ] Trade-offs explicitados
+- [ ] Limitações discutidas
+- [ ] Próximos passos claros
+- [ ] Status atualizado em `00-FONTE-DA-VERDADE.md`
+- [ ] Progress atualizado em `05-PROGRESS-TRACKER.md`
+- [ ] TODOs marcados como completos
+
+---
+
+## 🆘 EM CASO DE DÚVIDA
+
+1. **Estrutura?** → `docs/00-INDICE-VISUAL.md`
+2. **Status?** → `docs/_planejamento/00-FONTE-DA-VERDADE.md`
+3. **Como escrever?** → `docs/_planejamento/03-WRITING-GUIDE.md`
+4. **Que fonte usar?** → `docs/_planejamento/02-MAPEAMENTO-NOTEBOOKS.md`
+5. **Progresso?** → `docs/_planejamento/05-PROGRESS-TRACKER.md`
+
+---
+
+## 🎓 FILOSOFIA DO PROJETO
+
+> "Não estamos escrevendo um tutorial básico. Estamos criando um livro production-grade que engenheiros possam usar para construir sistemas reais."
+
+**Princípios:**
+- 📊 Dados e métricas reais
+- 🔍 Análise profunda de trade-offs
+- ⚖️ Honestidade sobre limitações
+- 🎯 Focus em produção, não demos
+- 📚 Academicamente referenciado
+- 💻 Código testável e funcional
+
+---
+
+**SEMPRE comece consultando:** `docs/_planejamento/00-FONTE-DA-VERDADE.md` 📍
+
+**Última atualização:** Novembro 2025
+

@@ -1,0 +1,232 @@
+{
+  "react": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "user_request": "I need to book a flight from SFO to JFK on 2025-09-01. My name is Adam.",
+        "trajectory": "[[ ## thought_0 ## ]]\nI need to retrieve the list of available flights for the requested route (SFO to JFK) on the specified date (2025-09-01) before proceeding with selection and booking.\n\n[[ ## tool_name_0 ## ]]\nfetch_flight_info\n\n[[ ## tool_args_0 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_0 ## ]]\n{\"flights\": [{\"flight_id\": \"f001\", \"flight_number\": \"AA101\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"08:00\", \"arrival_time\": \"16:30\", \"duration_minutes\": 330, \"price\": 450.0, \"available_seats\": 14}, {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 8}], \"count\": 2}\n\n[[ ## thought_1 ## ]]\nI have the list of available flights. The user did not specify a preference, so I will select the cheapest flight for them using the pick_flight tool.\n\n[[ ## tool_name_1 ## ]]\npick_flight\n\n[[ ## tool_args_1 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"preference\": \"price\"}\n\n[[ ## observation_1 ## ]]\n{\"selected_flight\": {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 8}, \"reason\": \"Best price\"}",
+        "next_thought": "I have identified the cheapest available flight (flight ID f002). The next step is to book this flight for the user, Adam, on the requested travel date.",
+        "next_tool_name": "book_flight",
+        "next_tool_args": {
+          "user_name": "Adam",
+          "flight_id": "f002",
+          "date": "2025-09-01"
+        }
+      },
+      {
+        "augmented": true,
+        "user_request": "What flights are available from JFK to LAX?",
+        "trajectory": "",
+        "next_thought": "The user wants to see available flights from JFK to LAX. To retrieve this information I need to query the flight database for a specific travel date. Since the user did not provide a date, I will assume the next available travel date (today) and fetch the flight options.",
+        "next_tool_name": "fetch_flight_info",
+        "next_tool_args": {
+          "departure": "JFK",
+          "arrival": "LAX",
+          "date": "2025-11-01"
+        }
+      },
+      {
+        "augmented": true,
+        "user_request": "Can you tell me my profile information? My name is Sarah.",
+        "trajectory": "[[ ## thought_0 ## ]]\nI need to retrieve Sarah's profile information from the system.\n\n[[ ## tool_name_0 ## ]]\nget_user_info\n\n[[ ## tool_args_0 ## ]]\n{\"name\": \"Sarah\"}\n\n[[ ## observation_0 ## ]]\n{\"user\": {\"name\": \"Sarah\", \"user_id\": \"user_002\", \"email\": \"sarah@example.com\", \"phone\": \"+1-555-0102\", \"frequent_flyer_number\": null}}",
+        "next_thought": "I have retrieved Sarah's profile information. I can now provide it to the user.",
+        "next_tool_name": "finish",
+        "next_tool_args": {}
+      },
+      {
+        "augmented": true,
+        "user_request": "I need to file a complaint about a delayed flight. My name is Adam.",
+        "trajectory": "",
+        "next_thought": "The user wants to file a complaint about a delayed flight. I have the user's name (Adam) and the issue description. I will use the file_ticket tool to create a support ticket for this complaint.",
+        "next_tool_name": "file_ticket",
+        "next_tool_args": {
+          "user_name": "Adam",
+          "issue_description": "Complaint about delayed flight"
+        }
+      },
+      {
+        "augmented": true,
+        "user_request": "I want the cheapest flight from SFO to JFK on 2025-09-01. I'm Adam.",
+        "trajectory": "[[ ## thought_0 ## ]]\nThe user wants the cheapest flight from SFO to JFK on 2025-09-01. I need to retrieve the list of available flights for that route and date before I can select the cheapest one.\n\n[[ ## tool_name_0 ## ]]\nfetch_flight_info\n\n[[ ## tool_args_0 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_0 ## ]]\n{\"flights\": [{\"flight_id\": \"f001\", \"flight_number\": \"AA101\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"08:00\", \"arrival_time\": \"16:30\", \"duration_minutes\": 330, \"price\": 450.0, \"available_seats\": 14}, {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 7}], \"count\": 2}",
+        "next_thought": "I have the list of available flights for the requested route and date. To fulfill the user's request for the cheapest flight, I will use the pick_flight tool with a preference for price.",
+        "next_tool_name": "pick_flight",
+        "next_tool_args": {
+          "departure": "SFO",
+          "arrival": "JFK",
+          "preference": "price"
+        }
+      },
+      {
+        "augmented": true,
+        "user_request": "I need to cancel my booking. My itinerary ID is test_123.",
+        "trajectory": "",
+        "next_thought": "The user wants to cancel a booking. I will invoke the cancel_itinerary tool with the provided itinerary ID.",
+        "next_tool_name": "cancel_itinerary",
+        "next_tool_args": {
+          "itinerary_id": "test_123"
+        }
+      },
+      {
+        "user_request": "Hi, I'm Sarah. Can you check my profile and then show me flights to LAX?",
+        "expected_tools_used": [
+          "get_user_info",
+          "fetch_flight_info"
+        ],
+        "expected_outcome": "multiple_actions_completed",
+        "expected_response_contains": [
+          "profile",
+          "flight"
+        ],
+        "task_type": "multi_step",
+        "complexity": "complex"
+      },
+      {
+        "user_request": "Show me all available flights from San Francisco to New York for next week.",
+        "expected_tools_used": [
+          "fetch_flight_info"
+        ],
+        "expected_outcome": "flights_listed",
+        "expected_response_contains": [
+          "flight",
+          "SFO",
+          "JFK"
+        ],
+        "task_type": "query",
+        "complexity": "medium"
+      }
+    ],
+    "signature": {
+      "instructions": "You are an airline customer service agent that helps users book and manage flights.\nYou are given a list of tools to handle user requests, and you should decide the right tool to use\nin order to fulfill users' requests.\n\nAvailable tools:\n- fetch_flight_info: Get available flights for a route and date\n- pick_flight: Select the best flight based on duration or price\n- get_user_info: Retrieve user profile information\n- book_flight: Book a flight for a user\n- cancel_itinerary: Cancel an existing booking\n- file_ticket: File a customer support ticket\n\nAlways be helpful, professional, and provide clear information about flights and bookings.\n\nYou are an Agent. In each episode, you will be given the fields `user_request` as input. And you can see your past trajectory so far.\nYour goal is to use one or more of the supplied tools to collect any necessary information for producing `response`.\n\nTo do this, you will interleave next_thought, next_tool_name, and next_tool_args in each turn, and also when finishing the task.\nAfter each tool call, you receive a resulting observation, which gets appended to your trajectory.\n\nWhen writing next_thought, you may reason about the current situation and plan for future steps.\nWhen selecting the next_tool_name and its next_tool_args, the tool must be one of:\n\n(1) fetch_flight_info, whose description is <desc>      Fetch available flights for a specific route and date.        Args:          departure: Departure airport code (e.g., 'SFO')          arrival: Arrival airport code (e.g., 'JFK')          date: Flight date in YYYY-MM-DD format        Returns:          JSON string with available flights      </desc>. It takes arguments {'departure': {'type': 'string'}, 'arrival': {'type': 'string'}, 'date': {'type': 'string'}}.\n(2) pick_flight, whose description is <desc>      Pick the best flight based on user preference.        Args:          departure: Departure airport code          arrival: Arrival airport code          preference: 'duration' for shortest flight, 'price' for cheapest        Returns:          JSON string with selected flight      </desc>. It takes arguments {'departure': {'type': 'string'}, 'arrival': {'type': 'string'}, 'preference': {'type': 'string', 'default': 'duration'}}.\n(3) get_user_info, whose description is <desc>      Retrieve user profile information.        Args:          name: User's name        Returns:          JSON string with user profile      </desc>. It takes arguments {'name': {'type': 'string'}}.\n(4) book_flight, whose description is <desc>      Book a flight for a user.        Args:          user_name: Name of the user          flight_id: ID of the flight to book          date: Travel date        Returns:          JSON string with booking confirmation      </desc>. It takes arguments {'user_name': {'type': 'string'}, 'flight_id': {'type': 'string'}, 'date': {'type': 'string'}}.\n(5) cancel_itinerary, whose description is <desc>      Cancel an existing itinerary.        Args:          itinerary_id: ID of the itinerary to cancel        Returns:          JSON string with cancellation result      </desc>. It takes arguments {'itinerary_id': {'type': 'string'}}.\n(6) file_ticket, whose description is <desc>      File a customer support ticket.        Args:          user_name: Name of the user filing the ticket          issue_description: Description of the issue        Returns:          JSON string with ticket information      </desc>. It takes arguments {'user_name': {'type': 'string'}, 'issue_description': {'type': 'string'}}.\n(7) finish, whose description is <desc>Marks the task as complete. That is, signals that all information for producing the outputs, i.e. `response`, are now available to be extracted.</desc>. It takes arguments {}.\nWhen providing `next_tool_args`, the value inside the field must be in JSON format",
+      "fields": [
+        {
+          "prefix": "User Request:",
+          "description": "The user's request or question"
+        },
+        {
+          "prefix": "Trajectory:",
+          "description": "${trajectory}"
+        },
+        {
+          "prefix": "Next Thought:",
+          "description": "${next_thought}"
+        },
+        {
+          "prefix": "Next Tool Name:",
+          "description": "${next_tool_name}"
+        },
+        {
+          "prefix": "Next Tool Args:",
+          "description": "${next_tool_args}"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "extract.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "user_request": "I need to book a flight from SFO to JFK on 2025-09-01. My name is Adam.",
+        "trajectory": "[[ ## thought_0 ## ]]\nI need to retrieve the list of available flights for the requested route (SFO to JFK) on the specified date (2025-09-01) before proceeding with selection and booking.\n\n[[ ## tool_name_0 ## ]]\nfetch_flight_info\n\n[[ ## tool_args_0 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_0 ## ]]\n{\"flights\": [{\"flight_id\": \"f001\", \"flight_number\": \"AA101\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"08:00\", \"arrival_time\": \"16:30\", \"duration_minutes\": 330, \"price\": 450.0, \"available_seats\": 14}, {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 8}], \"count\": 2}\n\n[[ ## thought_1 ## ]]\nI have the list of available flights. The user did not specify a preference, so I will select the cheapest flight for them using the pick_flight tool.\n\n[[ ## tool_name_1 ## ]]\npick_flight\n\n[[ ## tool_args_1 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"preference\": \"price\"}\n\n[[ ## observation_1 ## ]]\n{\"selected_flight\": {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 8}, \"reason\": \"Best price\"}\n\n[[ ## thought_2 ## ]]\nI have identified the cheapest available flight (flight ID f002). The next step is to book this flight for the user, Adam, on the requested travel date.\n\n[[ ## tool_name_2 ## ]]\nbook_flight\n\n[[ ## tool_args_2 ## ]]\n{\"user_name\": \"Adam\", \"flight_id\": \"f002\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_2 ## ]]\n{\"success\": true, \"confirmation_number\": \"CONF2F01BE9F\", \"itinerary_id\": \"85e966ea-bc93-4019-9a33-4224db5c4e7f\", \"flight\": {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 7}, \"total_price\": 380.0, \"message\": \"Flight UA205 booked successfully for Adam\"}\n\n[[ ## thought_3 ## ]]\nThe flight has been successfully booked for Adam on 2025-09-01. I will now finish the task so the response can be generated.\n\n[[ ## tool_name_3 ## ]]\nfinish\n\n[[ ## tool_args_3 ## ]]\n{}\n\n[[ ## observation_3 ## ]]\nCompleted.",
+        "reasoning": "The user requested a flight from SFO to JFK on 2025-09-01. I fetched the available flights, selected the cheapest option (UA205, flight ID f002, departing at 14:00, price $380), and successfully booked it for Adam. The booking returned a confirmation number and itinerary ID. I will now convey these details to the user in a clear, professional manner and ask if any further assistance is needed.",
+        "response": "Hello Adam,\n\nYour flight has been booked successfully!\n\n**Itinerary Details**\n- **Flight:** UA205 (United Airlines)\n- **Route:** San Francisco (SFO) → New York (JFK)\n- **Departure:** 2025‑09‑01 at 14:00\n- **Arrival:** 2025‑09‑01 at 22:45\n- **Duration:** 5 h 45 m\n- **Price:** $380.00 (total)\n\n**Booking Confirmation**\n- **Confirmation Number:** CONF2F01BE9F\n- **Itinerary ID:** 85e966ea-bc93-4019-9a33-4224db5c4e7f\n\nPlease keep this information for your records. If you need to add services (e.g., seat selection, baggage), modify the reservation, or have any other questions, feel free to let me know.\n\nThank you for choosing our airline. Have a pleasant trip!"
+      },
+      {
+        "augmented": true,
+        "user_request": "What flights are available from JFK to LAX?",
+        "trajectory": "[[ ## thought_0 ## ]]\nThe user wants to see available flights from JFK to LAX. To retrieve this information I need to query the flight database for a specific travel date. Since the user did not provide a date, I will assume the next available travel date (today) and fetch the flight options.\n\n[[ ## tool_name_0 ## ]]\nfetch_flight_info\n\n[[ ## tool_args_0 ## ]]\n{\"departure\": \"JFK\", \"arrival\": \"LAX\", \"date\": \"2025-11-01\"}\n\n[[ ## observation_0 ## ]]\n{\"flights\": [{\"flight_id\": \"f003\", \"flight_number\": \"DL302\", \"departure_airport\": \"JFK\", \"arrival_airport\": \"LAX\", \"departure_time\": \"10:00\", \"arrival_time\": \"13:30\", \"duration_minutes\": 390, \"price\": 520.0, \"available_seats\": 12}], \"count\": 1}\n\n[[ ## thought_1 ## ]]\nI have retrieved the available flights from JFK to LAX for the requested date. I will now provide the flight details to the user and finish the task.\n\n[[ ## tool_name_1 ## ]]\nfinish\n\n[[ ## tool_args_1 ## ]]\n{}\n\n[[ ## observation_1 ## ]]\nCompleted.",
+        "reasoning": "The user asked for available flights from JFK to LAX. Since no travel date was provided, I assumed the next day (2025‑11‑01) and used the `fetch_flight_info` tool to retrieve current options. The tool returned a single flight (DL302) with its schedule, duration, price, and seat availability. I will now convey this information to the user in a clear, friendly manner and invite them to proceed with booking or ask for alternative dates if needed.",
+        "response": "Here are the flights we have available from **JFK** to **LAX** for **November 1, 2025**:\n\n| Flight | Airline | Departure | Arrival | Duration | Price (USD) | Seats Available |\n|--------|---------|-----------|---------|----------|-------------|-----------------|\n| **DL302** | Delta Air Lines | 10:00 AM (JFK) | 1:30 PM (LAX) | 6 h 30 m | $520.00 | 12 |\n\nIf you’d like to book this flight, see options for other dates, or need any additional assistance, just let me know!"
+      },
+      {
+        "augmented": true,
+        "user_request": "Can you tell me my profile information? My name is Sarah.",
+        "trajectory": "[[ ## thought_0 ## ]]\nI need to retrieve Sarah's profile information from the system.\n\n[[ ## tool_name_0 ## ]]\nget_user_info\n\n[[ ## tool_args_0 ## ]]\n{\"name\": \"Sarah\"}\n\n[[ ## observation_0 ## ]]\n{\"user\": {\"name\": \"Sarah\", \"user_id\": \"user_002\", \"email\": \"sarah@example.com\", \"phone\": \"+1-555-0102\", \"frequent_flyer_number\": null}}\n\n[[ ## thought_1 ## ]]\nI have retrieved Sarah's profile information. I can now provide it to the user.\n\n[[ ## tool_name_1 ## ]]\nfinish\n\n[[ ## tool_args_1 ## ]]\n{}\n\n[[ ## observation_1 ## ]]\nCompleted.",
+        "reasoning": "I retrieved Sarah's user profile using the get_user_info tool. The returned data includes her name, user ID, email, phone number, and indicates that she does not currently have a frequent flyer number on file. I will now convey this information to the user in a clear, professional manner and offer assistance with any further actions, such as adding a frequent flyer number or updating her details.",
+        "response": "Sure, Sarah! Here’s the profile information we have on file for you:\n\n- **Name:** Sarah  \n- **User ID:** user_002  \n- **Email:** sarah@example.com  \n- **Phone:** +1‑555‑0102  \n- **Frequent Flyer Number:** *not on file*\n\nIf you’d like to add a frequent flyer number, update any of these details, or need help with anything else (e.g., booking a flight, checking upcoming trips), just let me know—I’m happy to assist!"
+      },
+      {
+        "augmented": true,
+        "user_request": "I need to file a complaint about a delayed flight. My name is Adam.",
+        "trajectory": "[[ ## thought_0 ## ]]\nThe user wants to file a complaint about a delayed flight. I have the user's name (Adam) and the issue description. I will use the file_ticket tool to create a support ticket for this complaint.\n\n[[ ## tool_name_0 ## ]]\nfile_ticket\n\n[[ ## tool_args_0 ## ]]\n{\"user_name\": \"Adam\", \"issue_description\": \"Complaint about delayed flight\"}\n\n[[ ## observation_0 ## ]]\n{\"success\": true, \"ticket_id\": \"c2b451a6-d123-4796-a573-d330c870deb8\", \"message\": \"Support ticket filed successfully. Ticket ID: c2b451a6-d123-4796-a573-d330c870deb8\"}\n\n[[ ## thought_1 ## ]]\nThe complaint has been successfully filed as a support ticket. I will now finish the interaction.\n\n[[ ## tool_name_1 ## ]]\nfinish\n\n[[ ## tool_args_1 ## ]]\n{}\n\n[[ ## observation_1 ## ]]\nCompleted.",
+        "reasoning": "The user requested to file a complaint about a delayed flight. Using the `file_ticket` tool, I successfully created a support ticket with the provided name (Adam) and issue description. The tool returned a ticket ID confirming the ticket was filed. I will now inform the user of the successful filing and provide the ticket ID.",
+        "response": "Hello Adam,\n\nYour complaint about the delayed flight has been successfully filed. Your support ticket ID is **c2b451a6-d123-4796-a573-d330c870deb8**. Our team will review the issue and get back to you as soon as possible.\n\nIf you need any further assistance or have additional details to add, please let me know.\n\nThank you for reaching out."
+      },
+      {
+        "augmented": true,
+        "user_request": "I want the cheapest flight from SFO to JFK on 2025-09-01. I'm Adam.",
+        "trajectory": "[[ ## thought_0 ## ]]\nThe user wants the cheapest flight from SFO to JFK on 2025-09-01. I need to retrieve the list of available flights for that route and date before I can select the cheapest one.\n\n[[ ## tool_name_0 ## ]]\nfetch_flight_info\n\n[[ ## tool_args_0 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_0 ## ]]\n{\"flights\": [{\"flight_id\": \"f001\", \"flight_number\": \"AA101\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"08:00\", \"arrival_time\": \"16:30\", \"duration_minutes\": 330, \"price\": 450.0, \"available_seats\": 14}, {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 7}], \"count\": 2}\n\n[[ ## thought_1 ## ]]\nI have the list of available flights for the requested route and date. To fulfill the user's request for the cheapest flight, I will use the pick_flight tool with a preference for price.\n\n[[ ## tool_name_1 ## ]]\npick_flight\n\n[[ ## tool_args_1 ## ]]\n{\"departure\": \"SFO\", \"arrival\": \"JFK\", \"preference\": \"price\"}\n\n[[ ## observation_1 ## ]]\n{\"selected_flight\": {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 7}, \"reason\": \"Best price\"}\n\n[[ ## thought_2 ## ]]\nI have identified the cheapest flight (flight ID f002) for Adam on 2025-09-01. The next step is to book this flight for him.\n\n[[ ## tool_name_2 ## ]]\nbook_flight\n\n[[ ## tool_args_2 ## ]]\n{\"user_name\": \"Adam\", \"flight_id\": \"f002\", \"date\": \"2025-09-01\"}\n\n[[ ## observation_2 ## ]]\n{\"success\": true, \"confirmation_number\": \"CONF7DD920E6\", \"itinerary_id\": \"bb62c0c7-0abb-4e63-a20e-68b751c2058b\", \"flight\": {\"flight_id\": \"f002\", \"flight_number\": \"UA205\", \"departure_airport\": \"SFO\", \"arrival_airport\": \"JFK\", \"departure_time\": \"14:00\", \"arrival_time\": \"22:45\", \"duration_minutes\": 345, \"price\": 380.0, \"available_seats\": 6}, \"total_price\": 380.0, \"message\": \"Flight UA205 booked successfully for Adam\"}\n\n[[ ## thought_3 ## ]]\nI have successfully booked the cheapest flight (UA205, flight ID f002) for Adam on 2025-09-01, and I have the confirmation details. I will now finish the task.\n\n[[ ## tool_name_3 ## ]]\nfinish\n\n[[ ## tool_args_3 ## ]]\n{}\n\n[[ ## observation_3 ## ]]\nCompleted.",
+        "reasoning": "The user requested the cheapest flight from SFO to JFK on 2025-09-01. I fetched the available flights, identified the cheapest option (UA205, flight ID f002, price $380.00), and successfully booked it for Adam. I now need to convey the confirmation details to the user in a clear, professional manner.",
+        "response": "Hello Adam,\n\nYour request for the cheapest flight from San Francisco (SFO) to New York (JFK) on **September 1, 2025** has been completed.\n\n**Flight Details**\n- **Airline / Flight Number:** United Airlines UA205  \n- **Departure:** SFO at 14:00 (2:00 PM)  \n- **Arrival:** JFK at 22:45 (10:45 PM)  \n- **Duration:** 5 hours 45 minutes  \n- **Price:** **$380.00** (total)\n\n**Booking Confirmation**\n- **Confirmation Number:** CONF7DD920E6  \n- **Itinerary ID:** bb62c0c7-0abb-4e63-a20e-68b751c2058b  \n\nYour seat has been reserved, and the flight now shows **6 seats remaining**.\n\nIf you need to make any changes, add services (such as baggage or seat selection), or have any other questions, please let me know. Thank you for choosing our airline—we look forward to getting you to New York safely and comfortably!\n\nBest regards,  \nCustomer Service Team"
+      },
+      {
+        "augmented": true,
+        "user_request": "I need to cancel my booking. My itinerary ID is test_123.",
+        "trajectory": "[[ ## thought_0 ## ]]\nThe user wants to cancel a booking. I will invoke the cancel_itinerary tool with the provided itinerary ID.\n\n[[ ## tool_name_0 ## ]]\ncancel_itinerary\n\n[[ ## tool_args_0 ## ]]\n{\"itinerary_id\": \"test_123\"}\n\n[[ ## observation_0 ## ]]\n{\"error\": \"Itinerary test_123 not found\"}\n\n[[ ## thought_1 ## ]]\nThe cancellation attempt returned an error indicating that the itinerary ID \"test_123\" could not be found. I will finish the interaction and inform the user that the itinerary was not located, and suggest they verify the ID or contact support for further assistance.\n\n[[ ## tool_name_1 ## ]]\nfinish\n\n[[ ## tool_args_1 ## ]]\n{}\n\n[[ ## observation_1 ## ]]\nCompleted.",
+        "reasoning": "The user requested to cancel a booking with itinerary ID \"test_123\". I attempted to cancel using the cancel_itinerary tool, but the system returned an error indicating that the itinerary could not be found. Since the itinerary ID does not exist in our records, I need to inform the user of this outcome and suggest they double‑check the ID or provide additional details. I will also offer assistance in locating the correct booking or opening a support ticket if needed.",
+        "response": "I’m sorry, but I wasn’t able to locate an itinerary with the ID **test_123** in our system. Could you please double‑check the itinerary number and let me know if there might be a typo or an alternative reference (e.g., a confirmation code or the email address used for the booking)? \n\nIf you’re still having trouble, I can help you open a support ticket so our team can investigate further, or we can look up the reservation using additional details you may have (such as the passenger name, travel dates, or departure/arrival cities). Just let me know how you’d like to proceed."
+      },
+      {
+        "user_request": "Hi, I'm Sarah. Can you check my profile and then show me flights to LAX?",
+        "expected_tools_used": [
+          "get_user_info",
+          "fetch_flight_info"
+        ],
+        "expected_outcome": "multiple_actions_completed",
+        "expected_response_contains": [
+          "profile",
+          "flight"
+        ],
+        "task_type": "multi_step",
+        "complexity": "complex"
+      },
+      {
+        "user_request": "Show me all available flights from San Francisco to New York for next week.",
+        "expected_tools_used": [
+          "fetch_flight_info"
+        ],
+        "expected_outcome": "flights_listed",
+        "expected_response_contains": [
+          "flight",
+          "SFO",
+          "JFK"
+        ],
+        "task_type": "query",
+        "complexity": "medium"
+      }
+    ],
+    "signature": {
+      "instructions": "You are an airline customer service agent that helps users book and manage flights.\nYou are given a list of tools to handle user requests, and you should decide the right tool to use\nin order to fulfill users' requests.\n\nAvailable tools:\n- fetch_flight_info: Get available flights for a route and date\n- pick_flight: Select the best flight based on duration or price\n- get_user_info: Retrieve user profile information\n- book_flight: Book a flight for a user\n- cancel_itinerary: Cancel an existing booking\n- file_ticket: File a customer support ticket\n\nAlways be helpful, professional, and provide clear information about flights and bookings.",
+      "fields": [
+        {
+          "prefix": "User Request:",
+          "description": "The user's request or question"
+        },
+        {
+          "prefix": "Trajectory:",
+          "description": "${trajectory}"
+        },
+        {
+          "prefix": "Reasoning: Let's think step by step in order to",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Response:",
+          "description": "Your response to the user"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.12",
+      "dspy": "3.0.3",
+      "cloudpickle": "3.1"
+    }
+  }
+}
