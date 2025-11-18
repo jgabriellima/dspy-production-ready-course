@@ -1,4 +1,4 @@
-.PHONY: install install-dev jupyter clean test lint format
+.PHONY: install install-dev jupyter clean test lint format data-preparation
 
 # Install production dependencies
 install:
@@ -39,15 +39,21 @@ format:
 setup-dev: install-dev
 	uv run python -m ipykernel install --user --name=ai-materials
 
+# Data preparation: convert PDFs to images
+data-preparation:
+	@echo "Preparando dados: convertendo PDFs em imagens..."
+	uv run python scripts/data_preparation.py
+
 # Help
 help:
 	@echo "Available commands:"
-	@echo "  install      Install production dependencies"
-	@echo "  install-dev  Install with development dependencies"
-	@echo "  jupyter      Start Jupyter Lab"
-	@echo "  notebook     Start Jupyter Notebook"
-	@echo "  clean        Clean up cache and temporary files"
-	@echo "  test         Run tests"
-	@echo "  lint         Run linting"
-	@echo "  format       Format code"
-	@echo "  setup-dev    Set up development environment"
+	@echo "  install           Install production dependencies"
+	@echo "  install-dev       Install with development dependencies"
+	@echo "  jupyter           Start Jupyter Lab"
+	@echo "  notebook          Start Jupyter Notebook"
+	@echo "  clean             Clean up cache and temporary files"
+	@echo "  test              Run tests"
+	@echo "  lint              Run linting"
+	@echo "  format            Format code"
+	@echo "  setup-dev         Set up development environment"
+	@echo "  data-preparation  Convert PDFs to images for data preparation"

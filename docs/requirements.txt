@@ -61,3 +61,4 @@ sphinxcontrib-mermaid>=0.9.2
 # psycopg2-binary>=2.9.0  # for database examples
 # sqlalchemy>=2.0.0  # for ORM examples
 
+

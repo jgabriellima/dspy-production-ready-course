@@ -23,4 +23,6 @@ dependencies = [
     "langfuse>=3.8.1",
     "dspy>=3.0.3",
     "openinference-instrumentation-dspy>=0.1.30",
+    "toons>=0.2.0",
+    "pdf2image>=1.16.0",
 ]

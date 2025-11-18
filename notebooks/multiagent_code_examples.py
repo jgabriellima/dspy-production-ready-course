@@ -734,3 +734,4 @@ if __name__ == "__main__":
     print("\nVeja os exemplos acima e adapte para seu caso de uso!")
     print("Consulte os notebooks para exemplos completos e executáveis.")
 
+

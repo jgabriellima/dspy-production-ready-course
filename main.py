@@ -12,8 +12,6 @@ def main():
 │   ════════════════════════════════════════════════════════     │
 │                                                                 │
 │     → Domine a arte de construir agentes de IA inteligentes    │
-│     → Programação declarativa e modular com DSPy               │
-│     → Do conceito à produção de forma profissional             │
 │                                                                 │
 │   ════════════════════════════════════════════════════════     │
 │                                                                 │

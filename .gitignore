@@ -1,10 +1,138 @@
-# Python-generated files
+# Python
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
 wheels/
-*.egg-info
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # Virtual environments
 .venv
+venv/
+ENV/
+env/
+.ENV
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# Jupyter Book
+_build/
+_build_jupyter_book/
+.jupyter_cache/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Modelos salvos (descomente se não quiser versionar modelos)
+# notebooks/saved_models/
+# models/
+
+# Arquivos de dados sensíveis
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# Secrets e API Keys
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets/
+.secrets/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# Arquivos de teste
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Arquivos de sistema
+*.bak
+*.backup
+*.old
+
+# Arquivos de dados grandes (descomente se necessário)
+# data/**/*.pdf
+# data/**/*.jpg
+# data/**/*.png
+# data/**/*.jpeg
+
+# UV (gerenciador de pacotes)
+.uv/
+
+# Arquivos de observabilidade/monitoring
+*.db
+*.sqlite
+*.sqlite3
